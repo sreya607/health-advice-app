@@ -1,3 +1,4 @@
+
 const adviceBox = document.getElementById('advice');
 const symptomBox = document.getElementById('symptoms');
 
@@ -58,3 +59,21 @@ function saveHistory(symptom, advice) {
   existing.push({ symptom, advice, time: new Date().toLocaleString() });
   localStorage.setItem("adviceHistory", JSON.stringify(existing));
 }
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var username = document.getElementById("username").value.trim();
+  var password = document.getElementById("password").value.trim();
+
+  // Hardcoded correct credentials
+  var correctUsername = "admin";
+  var correctPassword = "1234";
+
+  if (username === correctUsername && password === correctPassword) {
+    // Successful login - redirect to index.html
+    window.location.href = "index.html";
+  } else {
+    // Show error message
+    document.getElementById("errorMessage").innerText = "Invalid username or password.";
+  }
+});
